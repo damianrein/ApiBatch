@@ -61,6 +61,13 @@ public class ItemReaderStep implements Tasklet{
 		csvReader.close();
 		reader.close();
 		
+		
+		chunkContext.getStepContext()
+					.getStepExecution()
+					.getJobExecution()
+					.getExecutionContext()
+					.put("Persons", listOfPersons);
+		
 		log.info("=============================>>Fin del step de Lectura<<================================================");
 		return RepeatStatus.FINISHED;
 	}
