@@ -13,6 +13,7 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 
 import com.ApiBatch.entities.Person;
@@ -24,6 +25,7 @@ import com.opencsv.CSVReaderBuilder;
 
 public class ItemReaderStep implements Tasklet{
 
+	@Autowired
 	private ResourceLoader rl;
 	
 	private static final Logger log = LoggerFactory.getLogger(ItemReaderStep.class);
