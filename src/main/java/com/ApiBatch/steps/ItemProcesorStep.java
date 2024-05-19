@@ -22,10 +22,10 @@ public class ItemProcesorStep implements Tasklet{
 		log.info("===========================Inicio del step Proceso=======================");
 		
 		List<Person> listOfPersons = (List<Person>) chunkContext.getStepContext()
-												.getStepExecution()
-												.getJobExecution()
-												.getExecutionContext()
-												.get("Persons");
+				.getStepExecution()
+				.getJobExecution()
+				.getExecutionContext()
+				.get("Persons");
 		
         List<Person> personsFinalList = listOfPersons.stream().map(person -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");

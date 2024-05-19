@@ -37,13 +37,13 @@ public class ItemReaderStep implements Tasklet{
 		Reader reader = new FileReader(rl.getResource("C:\\Users\\usuario\\Desktop\\prueba java jdk-17").getFile());
 		
 		CSVParser parser = new CSVParserBuilder()
-								.withSeparator(',')
-								.build();
+				.withSeparator(',')
+				.build();
 		
 		CSVReader csvReader = new CSVReaderBuilder(reader)
-									.withCSVParser(parser)
-									.withSkipLines(1)
-									.build();
+				.withCSVParser(parser)
+				.withSkipLines(1)
+				.build();
 		
 		List<Person> listOfPersons = new LinkedList<>();
 		
