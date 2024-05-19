@@ -34,7 +34,7 @@ public class ItemReaderStep implements Tasklet{
 		
 		log.info("=============================>>Inicio del step de Lectura<<=============================================");
 		
-		Reader reader = new FileReader(rl.getResource("C:\\Users\\usuario\\Desktop\\prueba java jdk-17").getFile());
+		Reader reader = new FileReader(rl.getResource("C:\\Users\\usuario\\Desktop\\prueba java jdk-17\\Persons.csv").getFile());
 		
 		CSVParser parser = new CSVParserBuilder()
 				.withSeparator(',')
@@ -68,7 +68,7 @@ public class ItemReaderStep implements Tasklet{
 					.getStepExecution()
 					.getJobExecution()
 					.getExecutionContext()
-					.put("Persons", listOfPersons);
+					.put("listPersons", listOfPersons);
 		
 		log.info("=============================>>Fin del step de Lectura<<================================================");
 		return RepeatStatus.FINISHED;

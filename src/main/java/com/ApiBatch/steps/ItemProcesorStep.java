@@ -19,13 +19,13 @@ public class ItemProcesorStep implements Tasklet{
 	public static final Logger log = LoggerFactory.getLogger(ItemProcesorStep.class);
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		log.info("===========================Inicio del step Proceso=======================");
+		log.info("===========================Inicio del step de Procesamiento=======================");
 		
 		List<Person> listOfPersons = (List<Person>) chunkContext.getStepContext()
 				.getStepExecution()
 				.getJobExecution()
 				.getExecutionContext()
-				.get("Persons");
+				.get("listPersons");
 		
         List<Person> personsFinalList = listOfPersons.stream().map(person -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -39,8 +39,8 @@ public class ItemProcesorStep implements Tasklet{
                     .getExecutionContext()
                     .put("personsFinal", personsFinalList);
 		
-		log.info("============================Fin del step Proceso==========================");
-		return null;
+		log.info("============================Fin del step de Procesamiento==========================");
+		return RepeatStatus.FINISHED;
 	}
 
 }
