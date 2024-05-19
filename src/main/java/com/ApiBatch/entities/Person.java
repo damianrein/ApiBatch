@@ -20,7 +20,7 @@ public class Person {
 	private String email;
 	private boolean isClient;
 	private Date birthDate;
-	
+	private String insertionDate;
 	public Person() {}
 	
 	public Person(Long id, String name, String lastname, String email, boolean isClient, Date birthDate) {
@@ -64,5 +64,13 @@ public class Person {
 	}
 	public Long getId() {
 		return id;
+	}
+
+	public String getInsertionDate() {
+		return insertionDate;
+	}
+
+	public void setInsertionDate(String insertionDate) {
+		this.insertionDate = insertionDate;
 	}
 }
