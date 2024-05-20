@@ -1,6 +1,8 @@
 package com.ApiBatch.steps;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -36,11 +38,34 @@ public class ItemDescompressStep implements Tasklet{
 			}
 			
 			Enumeration<? extends ZipEntry> entries = zip.entries();
+			
+			while(entries.hasMoreElements()) {
+				ZipEntry zipEntry = entries.nextElement();
+				File file = new File(destDir, zipEntry.getName());
+				
+				if(file.isDirectory()) {
+					file.mkdirs();
+				}else {
+					InputStream inputStream = zip.getInputStream(zipEntry);
+					FileOutputStream outputStream = new FileOutputStream(file);
+					
+					byte [] buffer = new byte[1024];
+					int lenght;
+					
+					while((lenght = inputStream.read(buffer))>0) {
+						outputStream.write(buffer, 0, lenght);
+					}
+					inputStream.close();
+					outputStream.close();
+				}
+				
+			}
+			zip.close();
 		}
 		
 		log.info("===========================Fin del step de Descompresion=======================");
 		
-		return null;
+		return RepeatStatus.FINISHED;
 	}
 
 }
